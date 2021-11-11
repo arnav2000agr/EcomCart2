@@ -19,7 +19,7 @@ export default function CartTotals({value}) {
                     </Link>
                     <h5>
                         <span className="text-title">Subtotal: </span>
-                        <strong>{cartSubTotal}</strong>
+                        <b>₹ {cartSubTotal}.00</b>
                     </h5>
                </div>
            </div>
@@ -28,3 +28,4 @@ export default function CartTotals({value}) {
        </React.Fragment>;
     
 }
+
