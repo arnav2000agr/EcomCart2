@@ -1,36 +1,62 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom';
-import ecomlogo2 from '../ecomlogo2.png';
 import styled from 'styled-components';
+import {ProductConsumer} from '../context';
 import {ButtonContainer} from './Button';
-export default class Navbar extends Component {
+import {Link} from 'react-router-dom';
+
+export default class Modal extends Component {
     render() {
         return (
-            <NavWrapper className="navbar nav-bar-expand-sm navbar-dark px-sm-5">
-               <Link to='/'>
-                  <img src={ecomlogo2} height={70}alt="store" className="navbar-brand" />
-               </Link> 
-               <ul className="navbar-nav align-items-center">
-                 <li className="nav-item ml-5">
-                    <Link to="/" className="nav-link">
-                        <h4><i> Our Products </i></h4>
-                    </Link>
-                 </li>
-               </ul>
-               <Link to="/cart" className="ml-auto">
-                  <ButtonContainer>
-                      <i className="but"><b> Cart </b></i>
-                  </ButtonContainer>
-               </Link>
-            </NavWrapper>
-        )
+            <ProductConsumer>
+                {(value)=>{
+                    const {modalOpen,closeModal} =value;
+                    const {img, title,price} = value.modalProduct;
+                    if(!modalOpen){
+                        return null;
+                    }else{
+                        return (
+                            < ModalContainer >
+                            <div className="container">
+                                <div className="row">
+                                    <div id="modal" className=
+                                    "col-8 mx-auto col-md-6 col-lg-4 text-capitalize text-center p-5">
+                                    <h5>item added to the cart</h5>
+                                    <img src={img} className="img-fluid" alt="product" />
+                                    <h5>{title}</h5>
+                                    <h5 className="text-muted">price : ₹ {price}</h5>
+                                    <Link to='/'>
+                                    <ButtonContainer onClick={()=>closeModal()}>
+                                        <b>Shop More!</b>
+                                    </ButtonContainer>
+                                    </Link>
+                                    <Link to='/cart'>
+                                    <ButtonContainer cart onClick={() => closeModal()}>
+                                         <b>Go To Cart</b>
+                                    </ButtonContainer>
+                                    </Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </ModalContainer>
+                        );
+            }
+                
+        }}
+            </ProductConsumer>
+        );
     }
 }
-const NavWrapper = styled.nav`
-background:var(--mainBlue);
-.nav-link{
-    color:var(--mainWhite) !important;
-    font-size:1.3 rem;
-    text-transform:capitalize;
+const ModalContainer =styled.div`
+position:fixed;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background:rgba(0,0,0,0.3);
+display:flex;
+align-items:center;
+justify-content:center;
+#modal{
+    background:var(--mainWhite);
 }
 `;
