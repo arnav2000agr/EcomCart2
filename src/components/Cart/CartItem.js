@@ -17,20 +17,17 @@ export default function CartItem ({item,value}) {
            <div className="col-10 mx-auto col-lg-2 my-2 my-lg-2-0">
              <div className="d-flex justify-content-center">
                  <div>
-                    <span className="btn btn-black mx-1" onClick={()=>decrement(id)}>-</span>
-                    <span className="btn btn-black mx-1">{count}</span>
-                    <span className="btn btn-black mx-1" onClick={() => increment(id)}>+</span>
+                    <span className="btn btn-dark" onClick={()=>decrement(id)}>Dec</span>
+                    <span className="btn btn-white">{count}</span>
+                    <span className="btn btn-dark" onClick={() => increment(id)}>Inc</span>
                  </div>
              </div> 
-           </div>
-            {/**/} 
+           </div> 
             <div className="col-10 mx-auto col-lg-2">
-                <div className="cart-icon" onClick={()=>removeItem(id)}>
-                    <i className="fas fa-trash"></i>
-                </div>
+                <span className="btn btn-danger" onClick={()=>removeItem(id)}>Remove</span>
             </div>
             <div className="col-10 mx-auto col-lg-2">
-                <strong>item total : $ {total}</strong>
+                <b>Item total : ₹ {total}.00</b>
             </div>
         </div>
     )
