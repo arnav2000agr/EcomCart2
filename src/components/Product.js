@@ -50,7 +50,7 @@ Product.propTypes = {
 }
 const ProducrWrapper =styled.div`
 .card{
-    border-color:tranparent;
+    border-color:black;
     transition:all 1s linear;
 }
 .card-footer{
@@ -82,18 +82,12 @@ const ProducrWrapper =styled.div`
     bottom:0;
     right:0;
     padding:0.2rem 0.4rem;
-    background:var(--lightBlue);
-    color:var(--mainWhite);
+    background:var(--red);
     font-size:1.4rem;
     border-radius:0.5 rem 0 0 0;
-    transform:translate(100%, 100%);
-    transition:all 1s linear;
 }
-.img-container:hover .cart-btn{
-    transform:translate(0, 0);
 }
 .cart-btn:hover{
     color:var(--mainBlue);
-    cursor:pointer;
 }
 `;
